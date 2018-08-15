@@ -9,9 +9,9 @@ const db = mysql.createPool({
     user: USER,
     password: PASS,
     database: DATABASE,
-    port: PORT
+    port: PORT,
+    multipleStatements:true
 });
-
 module.exports={
     db:db,
 }

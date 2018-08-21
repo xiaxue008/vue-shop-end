@@ -8,4 +8,7 @@ module.exports = function (app) {
 
     var comment = require('./../www/comment/comment');
     app.use('/comments', comment);
+
+    var photos = require('./../www/photos/photos');
+    app.use('/photos', photos);
 }

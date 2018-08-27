@@ -11,4 +11,7 @@ module.exports = function (app) {
 
     var photos = require('./../www/photos/photos');
     app.use('/photos', photos);
+
+    var goods=require('./../www/goods/goods')
+    app.use('/goods',goods);
 }

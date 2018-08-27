@@ -29,4 +29,27 @@ router.use('/photolist/:id', function (req, res) {
     })
 })
 
+router.use('/photoinfo/:id', function (req, res) {
+    let id = req.params.id;
+    var sqltext = `select * from photoinfos where id=${id}`
+    mdb.query(sqltext, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(data[0]);
+        }
+    })
+})
+
+router.use('/getphoto/:id', function (req, res) {
+    let id = req.params.id;
+    var sqltext = `select * from lunbophoto where uid=${id}`
+    mdb.query(sqltext, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(data);
+        }
+    })
+})
 module.exports = router;

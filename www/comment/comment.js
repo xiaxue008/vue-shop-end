@@ -31,9 +31,9 @@ router.post('/postcom/:id', function (req, res) {
         if (err) {
             console.log(err);
         } else {
-           res.send({
-               status:true
-           })
+            res.send({
+                status: true
+            })
         }
     })
 })

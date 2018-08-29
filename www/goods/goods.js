@@ -21,5 +21,16 @@ router.use('/getgoodslist', function (req, res) {
         }
     });
 })
+router.use('/getgoodsinfo/:id', function (req, res) {
+    let id = req.params.id;
+    let sqltext = `select * from goodslist where id=${id}`;
+    mdb.query(sqltext, function (err, data) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.send(data);
+        }
+    })
+})
 
 module.exports = router;

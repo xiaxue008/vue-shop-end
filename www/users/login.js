@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const sqlhelper = require('./../../mysqlhandler');
 const mdb = sqlhelper.db;
+const mytoken=require('jsonwebtoken');
 
 //处理登录的逻辑
 router.post('/login', function (req, res) {
@@ -13,6 +14,7 @@ router.post('/login', function (req, res) {
             console.log(err);
         } else {
             let result = validata(userinfo, data[0]);
+            // req.session.username=userinfo.username
             res.send(result);
         }
     })
@@ -62,7 +64,9 @@ function validata(postuser, dbuser) {
         result.status = false;
         result.errMsg = '用户名密码不符';
     } else {
+        const token=mytoken.sign(postuser,'iloveyou');
         result.status = true
+        result.token=token;
     }
     return result;
 }
